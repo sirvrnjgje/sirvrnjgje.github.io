@@ -3,152 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Critical System Update Required</title>
+    <title>patience is a virtue</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #0d1117;
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-        /* Setup Phase View */
-        #setup-screen {
+        .loader-container {
             text-align: center;
-            color: #c9d1d9;
-            padding: 20px;
-            max-width: 450px;
-            z-index: 10;
-            transition: opacity 0.3s ease;
         }
-        .icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+        /* Spinning Ring Component */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: #38bdf8;
+            border-radius: 50%;
+            margin: 0 auto 24px auto;
+            animation: spin 1s linear infinite;
         }
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-            color: #f0f6fc;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+            animation: pulse 2s ease-in-out infinite;
         }
-        p {
-            font-size: 1rem;
-            color: #8b949e;
-            margin-bottom: 30px;
-            line-height: 1.5;
+        /* Rotational Animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        .action-btn {
-            background-color: #238636;
-            color: #ffffff;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
-            transition: background-color 0.2s, transform 0.1s;
-        }
-        .action-btn:hover {
-            background-color: #2ea043;
-        }
-        .action-btn:active {
-            transform: scale(0.98);
-        }
-        /* Hidden Video Layer */
-        #video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        /* Dynamic Animations */
+        /* Text Fading Effect */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
-        @keyframes shake {
-            0% { transform: translate(0, 0); }
-            10% { transform: translate(-5px, 5px); }
-            20% { transform: translate(5px, -5px); }
-            30% { transform: translate(-5px, -5px); }
-            40% { transform: translate(5px, 5px); }
-            53% { transform: translate(-5px, 5px); }
-            60% { transform: translate(5px, -5px); }
-            70% { transform: translate(-5px, -5px); }
-            80% { transform: translate(5px, 5px); }
-            90% { transform: translate(-5px, -5px); }
-            100% { transform: translate(0, 0); }
-        }
-        .shake-active {
-            animation: shake 0.5s linear 3;
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Deceptive Landing Interface -->
-    <div id="setup-screen">
-        <div class="icon">⚙️</div>
-        <h1>Action Required</h1>
-        <p>Your connection requires a secure initialization sequence to register properly with the server host environment.</p>
-        <button class="action-btn" id="start-btn">Initialize Connection</button>
+    <div class="loader-container">
+        <div class="spinner"></div>
+        <h1>loading please wait...</h1>
     </div>
 
-    <!-- Hidden Video Player Block -->
-    <div id="video-container">
-        <div id="player"></div>
-    </div>
-
-    <script>
-        document.getElementById('start-btn').addEventListener('click', function() {
-            // Trigger visual feedback
-            document.body.classList.add('shake-active');
-            
-            // Fade out the decoy interface
-            const setupScreen = document.getElementById('setup-screen');
-            setupScreen.style.opacity = '0';
-            
-            setTimeout(() => {
-                setupScreen.style.display = 'none';
-                
-                // Unveil and fade in the full screen video container
-                const container = document.getElementById('video-container');
-                container.style.display = 'block';
-                
-                // Force rendering cycle before applying opacity transition
-                container.offsetHeight; 
-                container.style.opacity = '1';
-                
-                // Inject the YouTube iframe element natively with autoplay parameters active
-                container.innerHTML = `
-                    <iframe 
-                        src="https://youtube.com" 
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen>
-                    </iframe>
-                `;
-            }, 400);
-        });
-    </script>
 </body>
 </html>
