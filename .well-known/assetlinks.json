@@ -2,8 +2,8 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.sirvrnjgje.hzsgvlku",
+    "package_name": "com.whisp.key",
     "sha256_cert_fingerprints":
-    ["B9:73:EE:43:E1:3A:FB:A8:BB:0A:52:C5:CC:E4:3D:68:55:12:2B:ED:38:38:E1:3D:F6:40:BB:55:4E:5A:5F:28"]
+    ["8A:0D:FD:00:76:E7:C2:58:F7:A2:B9:6E:47:8F:4C:35:94:96:1A:F6:72:4D:65:B8:50:4A:4A:3D:B2:13:75:3D"]
   }
 }]
